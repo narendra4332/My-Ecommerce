@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import Home from "../Pages/Home";
-import About from "../Pages/About";
-import Product from "../Pages/Product";
+import Home from "../pages/Home";
 
 function ProductCard() {
   const [HomePageCount, setHomePageCount] = useState(0);
@@ -17,8 +15,6 @@ function ProductCard() {
   return (
     <div>
       <Home HomePageCount={HomePageCount} />
-      <About />
-      <Product />
     </div>
   );
 }

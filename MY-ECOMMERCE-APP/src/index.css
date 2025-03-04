@@ -23,7 +23,6 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -60,9 +59,11 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #747bff;            
   }
   button {
     background-color: #f9f9f9;
   }
-} */
+}
+
+ */

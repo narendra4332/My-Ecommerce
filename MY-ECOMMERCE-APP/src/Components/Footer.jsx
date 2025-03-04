@@ -47,11 +47,8 @@ const Footer = () => {
           {/* Contact Info & Social Media */}
           <div className="col-md-4 mb-3">
             <h5>Contact Us</h5>
-            <p>
-              Plot No. 20,1st floor, Pitambara Tower, Ahinsha Vihar, Narela
-              Jode, Ayodhya Bypass, Bhopal, M.P. - 462041
-            </p>
-            <p>Email : info@suscom.in</p>
+            <p>Kejra Bhanpur, Maholi, Bhopal (M.P.) - 462041</p>
+            <p>info@suscomagro.com</p>
             <p>Phone : +91 769 745 1009</p>
 
             <div>

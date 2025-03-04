@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase"; // Firebase Firestore
 import { useNavigate } from "react-router-dom";
 
 function Checkout({ cart, setCart }) {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+
   const navigate = useNavigate();
 
   const handleCheckout = async (e) => {
@@ -17,18 +20,42 @@ function Checkout({ cart, setCart }) {
     }
 
     try {
-      // Save order to Firestore
-      const orderRef = await addDoc(collection(db, "Orders"), {
-        name,
-        address,
-        items: cart,
-        createdAt: new Date(),
-      });
+      const counterRef = doc(db, "Counters", "OrderCounter");
+      const counterSnap = await getDoc(counterRef);
+      let newOrderID;
 
-      console.log("Order placed successfully:", orderRef.id);
-      alert("Order placed successfully!");
+      if (counterSnap.exists()) {
+        const lastOrderID = counterSnap.data().lastOrderID || 100; // Default to 100 if undefined
+        newOrderID = lastOrderID + 1;
+      } else {
+        await setDoc(counterRef, { lastOrderID: 100 });
+        newOrderID = 101; // First order after initialization
+      }
 
-      // Clear the cart after checkout
+      // New Order Data
+      const newOrder = {
+        user: {
+          name,
+          email,
+          phone,
+          address,
+        },
+        orderDetails: {
+          items: cart,
+          createdAt: new Date(),
+        },
+      };
+
+      // Save order with unique ID
+      await setDoc(doc(db, "Orders", newOrderID.toString()), newOrder);
+
+      // Update the counter
+      await updateDoc(counterRef, { lastOrderID: newOrderID });
+
+      console.log("Order placed successfully:", newOrderID);
+      alert(`Order Placed Successfully! Your Order ID: ${newOrderID}`);
+
+      // Clear cart
       setCart([]);
 
       // Redirect to Thank You page
@@ -40,22 +67,36 @@ function Checkout({ cart, setCart }) {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "100px" }}>
       <h1>Checkout</h1>
       <form onSubmit={handleCheckout}>
-        <input 
-          type="text" 
-          placeholder="Name" 
-          value={name} 
-          onChange={(e) => setName(e.target.value)} 
-          required 
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
         />
-        <input 
-          type="text" 
-          placeholder="Address" 
-          value={address} 
-          onChange={(e) => setAddress(e.target.value)} 
-          required 
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          placeholder="Phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
         />
         <button type="submit">Place Order</button>
       </form>

@@ -20,7 +20,6 @@ function Cart({ cart }) {
             />
             <p>id:{item.id}</p>
             <p>Name:{item.Name}</p>
-            <p>Price: ${item.Price}</p>
           </div>
         ))
       )}

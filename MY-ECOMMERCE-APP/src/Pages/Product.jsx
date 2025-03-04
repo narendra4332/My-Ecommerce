@@ -7,7 +7,7 @@ function Product({ addToCart }) {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const querySnapshot = await getDocs(collection(db, "Admin"));
+      const querySnapshot = await getDocs(collection(db, "Products"));
       const productsArray = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
