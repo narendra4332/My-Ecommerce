@@ -98,7 +98,7 @@ function Checkout({ cart, setCart }) {
           onChange={(e) => setAddress(e.target.value)}
           required
         />
-        <button type="submit">Place Order</button>
+        <button type="submit">Place Enquiry</button>
       </form>
     </div>
   );
