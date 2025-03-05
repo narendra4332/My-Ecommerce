@@ -8,7 +8,7 @@ import {
   FaBoxOpen,
 } from "react-icons/fa";
 
-export default function Header({ cart, onSignOut }) {
+export default function Header({ cart, handleLogout }) {
   return (
     <nav className="navbar navbar-expand-lg bg-light shadow-sm py-2 fixed-top">
       <div className="container-fluid">
@@ -70,7 +70,7 @@ export default function Header({ cart, onSignOut }) {
             )}
             <button
               className="btn btn-outline-danger btn-sm d-flex align-items-center"
-              onClick={onSignOut}
+              onClick={handleLogout}
             >
               <FaUser className="me-1" /> Logout
             </button>
