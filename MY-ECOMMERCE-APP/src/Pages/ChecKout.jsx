@@ -53,7 +53,7 @@ function Checkout({ cart, setCart }) {
       await updateDoc(counterRef, { lastOrderID: newOrderID });
 
       console.log("Order placed successfully:", newOrderID);
-      alert(`Order Placed Successfully! Your Order ID: ${newOrderID}`);
+      alert(`Enquiry Placed Successfully! Your Order ID: ${newOrderID}`);
 
       // Clear cart
       setCart([]);

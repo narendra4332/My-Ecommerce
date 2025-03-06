@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { FaSignInAlt } from "react-icons/fa";
-
+import { FaGoogle } from "react-icons/fa";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -21,12 +22,33 @@ const Auth = () => {
   const handleAuth = async (e) => {
     e.preventDefault();
     try {
+      let userCredential;
       if (isSignUp) {
-        await createUserWithEmailAndPassword(auth, email, password);
+        userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        // Default role as "user"
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          email: email,
+          role: "user",
+        });
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
       }
-      navigate("/"); // Redirect to Home
+
+      // Fetch user role after login
+      const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+      const userRole = userDoc.exists() ? userDoc.data().role : "user";
+
+      // Redirect based on role
+      navigate(userRole === "admin" ? "/admin" : "/");
     } catch (error) {
       alert(error.message);
     }
@@ -35,29 +57,38 @@ const Auth = () => {
   // Handle Google Sign-In
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithPopup(auth, provider);
-      navigate("/"); // Redirect to Home
+      const userCredential = await signInWithPopup(auth, provider);
+      const userRef = doc(db, "users", userCredential.user.uid);
+      const userDoc = await getDoc(userRef);
+
+      // If new user, set default role
+      if (!userDoc.exists()) {
+        await setDoc(userRef, {
+          email: userCredential.user.email,
+          role: "user",
+        });
+      }
+
+      const userRole = userDoc.exists() ? userDoc.data().role : "user";
+      navigate(userRole === "admin" ? "/admin" : "/");
     } catch (error) {
       alert(error.message);
     }
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
-      <div className="card shadow-lg p-4 rounded" style={{ width: "350px" }}>
-        <h2 className="text-center text-primary">
-          {isSignUp ? "Create an Account" : "Welcome Back"}
+    <div className="auth-container d-flex align-items-center justify-content-center vh-100">
+      <div className="auth-card p-4 shadow-lg rounded">
+        <h2 className="text-center text-light fw-bold">
+          {isSignUp ? "Create Account" : "Welcome Back"}
         </h2>
-        <p className="text-center text-muted">
-          {isSignUp ? "Sign up to get started!" : "Sign in to continue"}
-        </p>
 
         <form onSubmit={handleAuth}>
           <div className="mb-3">
             <input
               type="email"
               className="form-control"
-              placeholder="Email"
+              placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -73,29 +104,28 @@ const Auth = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-primary w-100 fw-bold">
             {isSignUp ? "Register" : "Login"}
           </button>
         </form>
 
         <div className="text-center my-3">
-          <p className="text-muted">or</p>
+          <p className="text-light">OR</p>
           <button
-            className="btn btn-outline-danger w-100"
+            className="btn btn-light w-100 shadow-sm d-flex align-items-center justify-content-center"
             onClick={handleGoogleSignIn}
           >
-            <i className="fab fa-google me-2"></i> Sign in with Google {}
-            <FaSignInAlt />
+            <FaGoogle className="me-2" /> Sign in with Google
           </button>
         </div>
 
-        <p className="text-center mt-3">
+        <p className="text-center text-light mt-3">
           {isSignUp ? "Already have an account?" : "Don't have an account?"}
           <button
-            className="btn btn-link text-decoration-none text-primary"
+            className="btn btn-link text-decoration-none fw-bold"
             onClick={() => setIsSignUp(!isSignUp)}
           >
-            {isSignUp ? "Sign In" : "Sign Up"}
+            {isSignUp ? "Login" : "Sign Up"}
           </button>
         </p>
       </div>

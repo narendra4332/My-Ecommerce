@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { FaArrowRight, FaPhone } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,10 +13,11 @@ import s6 from "../assets/s6.jpg";
 import s7 from "../assets/sliderProducts/A6CON1 terminal block.jpg";
 import s8 from "../assets/sliderProducts/Delta power cable(1-2kw).jpg";
 import s9 from "../assets/sliderProducts/Delta-ASDA-A2-Series-AC-Servo-Motor.jpg";
-import s10 from "../assets/sliderProducts/Ethernet patch cord.png";
+// import s10 from "../assets/sliderProducts/Ethernet patch cord.png";
 import s11 from "../assets/sliderProducts/FRC_Round_cable.jpg";
 
 function Home({ HomePageCount }) {
+  const whatsappNumber = "6264213443";
   const homePageData = [
     {
       id: 0,
@@ -252,6 +254,21 @@ function Home({ HomePageCount }) {
               </div>
             ))}
           </Slider>
+        </div>
+      </div>
+      <div>
+        {/* Pehle ka pura content yahan rahega */}
+
+        {/* WhatsApp Button */}
+        <div className="text-center mt-4">
+          <a
+            href={`https://wa.me/${whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-success btn-lg whatsapp-button"
+          >
+            Chat on WhatsApp <FaWhatsapp />
+          </a>
         </div>
       </div>
     </div>
