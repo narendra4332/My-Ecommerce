@@ -14,9 +14,14 @@ function Product({ addToCart }) {
   const [products, setProducts] = useState([]);
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
-  const [newProduct, setNewProduct] = useState({ Name: "", ImageURL: "" });
+  const [newProduct, setNewProduct] = useState({
+    Name: "",
+    ImageFile: null,
+    ImageURL: "",
+  });
+  const [editingProduct, setEditingProduct] = useState(null);
 
-  // Fetch user role
+  // ✅ Fetch user role
   useEffect(() => {
     const fetchUserRole = async () => {
       if (auth.currentUser) {
@@ -31,7 +36,7 @@ function Product({ addToCart }) {
     fetchUserRole();
   }, []);
 
-  // Fetch products from Firestore
+  // ✅ Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       const querySnapshot = await getDocs(collection(db, "Products"));
@@ -44,37 +49,67 @@ function Product({ addToCart }) {
     fetchProducts();
   }, []);
 
-  // Add a new product (Admin Only)
-  const handleAddProduct = async () => {
-    if (role !== "admin") return;
-    if (!newProduct.Name || !newProduct.ImageURL) {
-      alert("Please enter product details!");
-      return;
+  // ✅ Convert image to Base64 and store in Firestore
+  const handleImageUpload = (event, isEdit = false) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (isEdit) {
+          setEditingProduct({
+            ...editingProduct,
+            ImageFile: file,
+            ImageURL: reader.result, // Base64 Data
+          });
+        } else {
+          setNewProduct({
+            ...newProduct,
+            ImageFile: file,
+            ImageURL: reader.result,
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     }
-    const docRef = await addDoc(collection(db, "Products"), newProduct);
-    setProducts([...products, { id: docRef.id, ...newProduct }]);
-    setNewProduct({ Name: "", ImageURL: "" });
   };
 
-  // Edit product (Admin Only)
-  const handleEditProduct = async (id, updatedName, updatedImageURL) => {
-    if (role !== "admin") return;
+  // ✅ Add Product (With Base64 Image)
+  const handleAddProduct = async () => {
+    if (role !== "admin" || !newProduct.Name || !newProduct.ImageURL) return;
+    const docRef = await addDoc(collection(db, "Products"), {
+      Name: newProduct.Name,
+      ImageURL: newProduct.ImageURL, // Base64 Data
+    });
+    setProducts([
+      ...products,
+      { id: docRef.id, Name: newProduct.Name, ImageURL: newProduct.ImageURL },
+    ]);
+    setNewProduct({ Name: "", ImageFile: null, ImageURL: "" });
+  };
+
+  // ✅ Edit Product (Update Base64 Image)
+  const handleEditProduct = async (id) => {
+    if (!editingProduct || role !== "admin") return;
     const productRef = doc(db, "Products", id);
     await updateDoc(productRef, {
-      Name: updatedName,
-      ImageURL: updatedImageURL,
+      Name: editingProduct.Name,
+      ImageURL: editingProduct.ImageURL, // Base64 Data
     });
-
     setProducts(
-      products.map((product) =>
-        product.id === id
-          ? { ...product, Name: updatedName, ImageURL: updatedImageURL }
-          : product
+      products.map((p) =>
+        p.id === id
+          ? {
+              ...p,
+              Name: editingProduct.Name,
+              ImageURL: editingProduct.ImageURL,
+            }
+          : p
       )
     );
+    setEditingProduct(null);
   };
 
-  // Delete product (Admin Only)
+  // ✅ Delete Product
   const handleDeleteProduct = async (id) => {
     if (role !== "admin") return;
     await deleteDoc(doc(db, "Products", id));
@@ -83,9 +118,7 @@ function Product({ addToCart }) {
 
   return (
     <div className="container my-5 container1">
-      <h1 className="text-center text-primary fw-bold">Products</h1>
-
-      {/* Add Product Form (Only for Admins) */}
+      <h1 className="text-center fw-bold">Products</h1>
       {role === "admin" && (
         <div className="add-product-form p-4 mb-4 shadow-sm rounded">
           <input
@@ -98,20 +131,23 @@ function Product({ addToCart }) {
             }
           />
           <input
-            type="text"
+            type="file"
             className="form-control mb-2"
-            placeholder="Image URL"
-            value={newProduct.ImageURL}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, ImageURL: e.target.value })
-            }
+            accept="image/*"
+            onChange={handleImageUpload}
           />
+          {newProduct.ImageURL && (
+            <img
+              src={newProduct.ImageURL}
+              className="img-thumbnail mb-2"
+              style={{ maxWidth: "150px" }}
+            />
+          )}
           <button className="btn btn-success w-100" onClick={handleAddProduct}>
             Add Product
           </button>
         </div>
       )}
-
       <div className="row">
         {products.map((product) => (
           <div className="col-md-4 col-lg-3 mb-4" key={product.id}>
@@ -122,40 +158,71 @@ function Product({ addToCart }) {
                 alt={product.Name}
               />
               <div className="card-body text-center">
-                <h5 className="card-title">{product.Name}</h5>
-
-                {/* Add to Cart Button for Users */}
-                <button
-                  className="btn btn-primary w-100 mb-2"
-                  onClick={() => addToCart(product)}
-                >
-                  Add to Cart
-                </button>
-
-                {/* Admin Controls */}
-                {role === "admin" && (
-                  <div className="d-flex justify-content-between">
+                {editingProduct && editingProduct.id === product.id ? (
+                  <>
+                    <input
+                      type="text"
+                      className="form-control mb-2"
+                      value={editingProduct.Name}
+                      onChange={(e) =>
+                        setEditingProduct({
+                          ...editingProduct,
+                          Name: e.target.value,
+                        })
+                      }
+                    />
+                    <input
+                      type="file"
+                      className="form-control mb-2"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, true)}
+                    />
+                    {editingProduct.ImageURL && (
+                      <img
+                        src={editingProduct.ImageURL}
+                        className="img-thumbnail mb-2"
+                        style={{ maxWidth: "100px" }}
+                      />
+                    )}
                     <button
-                      className="btn btn-warning btn-sm"
-                      onClick={() => {
-                        const newName = prompt("Enter new name", product.Name);
-                        const newImageURL = prompt(
-                          "Enter new image URL",
-                          product.ImageURL
-                        );
-                        if (newName && newImageURL)
-                          handleEditProduct(product.id, newName, newImageURL);
-                      }}
+                      className="btn btn-success btn-sm me-2"
+                      onClick={() => handleEditProduct(product.id)}
                     >
-                      Edit
+                      Save
                     </button>
                     <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => handleDeleteProduct(product.id)}
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => setEditingProduct(null)}
                     >
-                      Delete
+                      Cancel
                     </button>
-                  </div>
+                  </>
+                ) : (
+                  <>
+                    <h5 className="card-title">{product.Name}</h5>
+                    <button
+                      className="btn-style"
+                      onClick={() => addToCart(product)}
+                    >
+                      Add to Cart
+                    </button>
+                    {role === "admin" && (
+                      <div className="d-flex justify-content-between">
+                        <button
+                          className="btn btn-warning btn-sm me-2"
+                          onClick={() => setEditingProduct(product)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() => handleDeleteProduct(product.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </div>
