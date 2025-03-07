@@ -1,8 +1,11 @@
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { FaArrowRight, FaPhone } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "../Firebase";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,14 +13,26 @@ import s1 from "../assets/s1.jpg";
 import s4 from "../assets/s4.jpg";
 import s5 from "../assets/s5.png";
 import s6 from "../assets/s6.jpg";
-import s7 from "../assets/sliderProducts/A6CON1 terminal block.jpg";
-import s8 from "../assets/sliderProducts/Delta power cable(1-2kw).jpg";
-import s9 from "../assets/sliderProducts/Delta-ASDA-A2-Series-AC-Servo-Motor.jpg";
-// import s10 from "../assets/sliderProducts/Ethernet patch cord.png";
-import s11 from "../assets/sliderProducts/FRC_Round_cable.jpg";
+
+import Product from "./Product";
 
 function Home({ HomePageCount }) {
   const whatsappNumber = "6264213443";
+
+  const [products, setProducts] = useState([]);
+
+  // Firestore se products fetch karein
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const querySnapshot = await getDocs(collection(db, "Products"));
+      const productsArray = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(productsArray);
+    };
+    fetchProducts();
+  }, []);
   const homePageData = [
     {
       id: 0,
@@ -49,68 +64,21 @@ function Home({ HomePageCount }) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 600, // Slightly increased for smooth transition
+    speed: 600,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2500, // Faster autoplay for better engagement
-    pauseOnHover: true, // Pause autoplay when hovered
-    cssEase: "ease-in-out", // Smooth easing effect
-    arrows: true, // Ensure navigation arrows are enabled
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
+    cssEase: "ease-in-out",
+    arrows: true,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplaySpeed: 2800,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          autoplaySpeed: 3000,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplaySpeed: 3200,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   };
-  const products = [
-    {
-      id: 1,
-      image: s7,
-      description: "High-quality Encoder Cable for precision control.",
-    },
-    {
-      id: 2,
-      image: s8,
-      description: "Reliable Data Transmission Cable for automation.",
-    },
-    {
-      id: 3,
-      image: s9,
-      description: "Multi-core shielded wires for long-distance connectivity.",
-    },
-    // {
-    //   id: 4,
-    //   image: s10,
-    //   description: "Servo Drive System with advanced performance.",
-    // },
-    {
-      id: 5,
-      image: s11,
-      description: "Heavy Duty Connectors for industrial robots.",
-    },
-  ];
+
   return (
     <div>
       {/* Slideshow Section */}
@@ -194,7 +162,7 @@ function Home({ HomePageCount }) {
         </div>
 
         <div className="text-center mt-5 ">
-          <a href="/contact" className="btn btn-primary btn-lg product-button ">
+          <a href="/contact" class="About-button">
             Contact Us <FaPhone />
           </a>
         </div>
@@ -230,24 +198,23 @@ function Home({ HomePageCount }) {
         </div>
       </div>
 
-      {/* Slideshow Section1 */}
+      {/* ✅ Products Slider Section */}
       <div className="slider-section">
-        {/* ✅ Our Products Heading */}
         <h2 className="slider-heading">Our Products</h2>
         <div className="slider-container">
           <Slider {...settings}>
             {products.map((product) => (
               <div className="product-card" key={product.id}>
                 <img
-                  src={product.image}
-                  alt="Product"
+                  src={product.ImageURL}
+                  alt={product.Name}
                   className="product-image"
                 />
                 <div className="product-info">
-                  <p>{product.description}</p>
+                  <p>{product.Name}</p>
                   <Link to="/Product">
                     <button className="product-button">
-                      Go to Products <FaArrowRight />
+                      View More <FaArrowRight />
                     </button>
                   </Link>
                 </div>
@@ -256,9 +223,8 @@ function Home({ HomePageCount }) {
           </Slider>
         </div>
       </div>
-      <div>
-        {/* Pehle ka pura content yahan rahega */}
 
+      <div>
         {/* WhatsApp Button */}
         <div className="text-center mt-4">
           <a
