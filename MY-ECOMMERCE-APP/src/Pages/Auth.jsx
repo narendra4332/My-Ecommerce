@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaGoogle } from "react-icons/fa";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth, db } from "../Firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -17,6 +18,21 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
+
+  // Track authentication state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userRole = userDoc.exists() ? userDoc.data().role : "user";
+
+        // Redirect user after login
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup listener
+  }, [navigate]);
 
   // Handle Email/Password Auth
   const handleAuth = async (e) => {
@@ -42,13 +58,6 @@ const Auth = () => {
           password
         );
       }
-
-      // Fetch user role after login
-      const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
-      const userRole = userDoc.exists() ? userDoc.data().role : "user";
-
-      // Redirect based on role
-      navigate(userRole === "admin" ? "/admin" : "/");
     } catch (error) {
       alert(error.message);
     }
@@ -59,18 +68,15 @@ const Auth = () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       const userRef = doc(db, "users", userCredential.user.uid);
-      const userDoc = await getDoc(userRef);
+      let userRole = "user"; // Default role
 
-      // If new user, set default role
+      const userDoc = await getDoc(userRef);
       if (!userDoc.exists()) {
         await setDoc(userRef, {
           email: userCredential.user.email,
           role: "user",
         });
       }
-
-      const userRole = userDoc.exists() ? userDoc.data().role : "user";
-      navigate(userRole === "admin" ? "/admin" : "/");
     } catch (error) {
       alert(error.message);
     }
