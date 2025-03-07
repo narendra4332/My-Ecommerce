@@ -70,6 +70,16 @@
   .background {
     height: 400px;
   }
+  .text-style {
+      position: absolute;
+      transform: translate(-50%, -110%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      /* width: 90%; */
+      max-width: 600px;
+  }
 
   .text-style h1 {
     font-size: 28px;
@@ -88,8 +98,18 @@
 @media (max-width: 480px) {
   .background {
     height: 300px;
+    padding-top: 10px;
   }
-
+  .text-style {
+      position: absolute;
+      transform: translate(-50%, -110%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      /* width: 90%; */
+      max-width: 600px;
+  }
   .text-style h1 {
     font-size: 24px;
   }
@@ -102,6 +122,51 @@
     font-size: 14px;
     padding: 8px 16px;
   }
+}
+.About-button{
+    padding: 10px;
+    text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(45deg, #333, #555);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+.About-button:hover {
+    background: linear-gradient(45deg, #555, #333);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+}
+/* Responsive Image Styling */
+.about-img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive Text Section */
+.about-text {
+    padding: 20px;
+}
+
+/* Small Screen Adjustments */
+@media (max-width: 768px) {
+    .about-text {
+        text-align: center;
+    }
+}
+@media (max-width: 480px) {
+    .about-text {
+        text-align: center;
+    }
 }
 
 
@@ -116,20 +181,19 @@
 
 /* ✅ Title Styling */
 .why-different h2 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+        font-size: 2.0rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        padding-bottom: 30px;
 }
 
 .why-different h2::after {
-    content: "";
+content: "";
     display: block;
     width: 80px;
     height: 4px;
-    background: #ff5733;
+    background: #333;
     margin: 8px auto 0;
     border-radius: 2px;
 }
@@ -239,7 +303,6 @@
     max-width: 280px;
     position: relative;
     overflow: hidden;
-
 }
 
 /* ✅ Hover Effect */
@@ -264,6 +327,9 @@
 /* ✅ Product Info */
 .product-info {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .product-info p {
@@ -274,19 +340,24 @@
 
 /* ✅ Stylish Button */
 .product-button {
-    background: linear-gradient(45deg, #007bff, #00d4ff);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        background: linear-gradient(45deg, #333, #555);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 
 }
 
 .product-button:hover {
-    background: linear-gradient(45deg, #0056b3, #0088cc);
+background: linear-gradient(45deg, #555, #333);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
 }
 
@@ -367,21 +438,21 @@
 
 /* ✅ Our Products Heading */
 .slider-heading {
-    font-size: 36px;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-    position: relative;
-    display: inline-block;
+        font-size: 2.0rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        padding-bottom: 30px;
 }
 
 /* ✅ Underline Effect */
 .slider-heading::after {
-    content: "";
+content: "";
     display: block;
     width: 80px;
     height: 4px;
-    background: #ff5733;
+    background: #333;
     margin: 8px auto 0;
     border-radius: 2px;
 }
@@ -410,13 +481,6 @@
     }
 }
 
-/* .whatsapp-button {
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    margin-left: 20px;
-} */
+.whatsapp-button {
+   margin-bottom: 20px;
+}
