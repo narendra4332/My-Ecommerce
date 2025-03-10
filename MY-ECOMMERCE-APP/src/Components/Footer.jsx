@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -53,13 +54,17 @@ const Footer = () => {
 
             <div>
               <a href="#" className="text-light me-3">
-                Facebook<i className="fab fa-facebook-f"></i>
+                <FaFacebook size={20} />
+                <i className="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f"></i>
               </a>
               <a href="#" className="text-light me-3">
-                <i className="fab fa-twitter"></i>Twitter
+                <i className="fab fa-twitter"></i>
+                <FaLinkedin size={20} />
               </a>
               <a href="#" className="text-light me-3">
-                <i className="fab fa-linkedin-in"></i>Linkedin
+                <i className="fab fa-linkedin-in"></i>
+                <FaTwitter size={20} />
               </a>
             </div>
           </div>
