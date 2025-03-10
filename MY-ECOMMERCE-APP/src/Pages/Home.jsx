@@ -13,10 +13,13 @@ import s1 from "../assets/s1.jpg";
 import s4 from "../assets/s4.jpg";
 import s5 from "../assets/s5.png";
 import s6 from "../assets/s6.jpg";
+import { useNavigate } from "react-router-dom";
 
-import Product from "./Product";
+// import Product from "./Product";
 
 function Home({ HomePageCount }) {
+  const navigate = useNavigate();
+
   const whatsappNumber = "6264213443";
 
   const [products, setProducts] = useState([]);
@@ -162,9 +165,9 @@ function Home({ HomePageCount }) {
         </div>
 
         <div className="text-center mt-5 ">
-          <a href="/contact" class="About-button">
+          <button onClick={() => navigate("/Contact")} class="About-button">
             Contact Us <FaPhone />
-          </a>
+          </button>
         </div>
       </div>
       {/* Why are we different section */}
