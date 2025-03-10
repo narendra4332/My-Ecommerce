@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./Firebase";
-
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 import ChecKout from "./Pages/ChecKout";
@@ -59,6 +58,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
 
             <Route path="/cart" element={<Cart cart={cart} />} />
+
             <Route
               path="/checkout"
               element={<ChecKout cart={cart} setCart={setCart} />}
