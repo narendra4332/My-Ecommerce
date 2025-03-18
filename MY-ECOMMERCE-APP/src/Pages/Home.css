@@ -8,17 +8,17 @@
   animation-name: fadeIn;
 }
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .fade-in {
-    animation: fadeIn 0.8s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 /* ✅ Centered Text on Image */
 .text-style {
@@ -35,34 +35,35 @@
 }
 /* ✅ Underline Effect */
 .text-style h1::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #ff5733;
-    margin: 8px auto 0;
-    border-radius: 2px;
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  /* background: #0876ff; */
+  background: linear-gradient(120deg, #66a3ff, #0876ff);
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
-.text-style p{
-    font-size: 20px;
+.text-style p {
+  font-size: 20px;
 }
 
 .text-style button {
-    padding: 12px 24px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: none;
-    background: linear-gradient(45deg, #ff5733, #e74c3c);
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(120deg, #0876ff, #66a3ff);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.4s ease-in-out;
 }
 
 /* ✅ Hover Effect */
 .text-style button:hover {
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  background: linear-gradient(120deg, #66a3ff, #0876ff);
+  box-shadow: 0px 4px 10px rgba(8, 118, 255, 0.4);
+  transform: scale(1.05);
 }
 
 /* ✅ Responsive Adjustments */
@@ -71,14 +72,14 @@
     height: 400px;
   }
   .text-style {
-      position: absolute;
-      transform: translate(-50%, -110%);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      border-radius: 10px;
-      /* width: 90%; */
-      max-width: 600px;
+    position: absolute;
+    transform: translate(-50%, -110%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    /* width: 90%; */
+    max-width: 600px;
   }
 
   .text-style h1 {
@@ -101,14 +102,14 @@
     padding-top: 10px;
   }
   .text-style {
-      position: absolute;
-      transform: translate(-50%, -110%);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      border-radius: 10px;
-      /* width: 90%; */
-      max-width: 600px;
+    position: absolute;
+    transform: translate(-50%, -110%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    /* width: 90%; */
+    max-width: 600px;
   }
   .text-style h1 {
     font-size: 24px;
@@ -123,364 +124,357 @@
     padding: 8px 16px;
   }
 }
-.About-button{
-    padding: 10px;
-    text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-        background: linear-gradient(45deg, #333, #555);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+.About-button {
+  background: linear-gradient(120deg, #dc3545, #ff6b81);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
 .About-button:hover {
-    background: linear-gradient(45deg, #555, #333);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        transform: scale(1.05);
+  background: linear-gradient(120deg, #ff6b81, #dc3545);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
 }
 /* Responsive Image Styling */
 .about-img {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-    display: block;
-    margin: 0 auto;
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Responsive Text Section */
 .about-text {
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Small Screen Adjustments */
 @media (max-width: 768px) {
-    .about-text {
-        text-align: center;
-    }
+  .about-text {
+    text-align: center;
+  }
 }
 @media (max-width: 480px) {
-    .about-text {
-        text-align: center;
-    }
+  .about-text {
+    text-align: center;
+  }
 }
-
 
 /* ⬇️ Why we are deffrent styling */
 .why-different {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-    padding: 50px 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  padding: 50px 20px;
 }
 
 /* ✅ Title Styling */
 .why-different h2 {
-    font-family: 'Poppins', sans-serif;
-        font-size: 2.0rem;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        padding-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .why-different h2::after {
-content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #333;
-    margin: 8px auto 0;
-    border-radius: 2px;
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #333;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 /* ✅ Subtitle */
 .why-different p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ✅ Features Grid */
 .features-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
 }
 
 /* ✅ Individual Feature Box */
 .feature-box {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 /* ✅ Hover Effect */
 .feature-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* ✅ Feature Titles */
 .feature-box h4 {
-    font-size: 22px;
-    color: #ff5733;
-    margin-bottom: 10px;
+  font-size: 22px;
+  color: #ff5733;
+  margin-bottom: 10px;
 }
 
 /* ✅ Feature Descriptions */
 .feature-box p {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.6;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
 }
 
 /* ✅ Fade-in Animation */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .feature-box {
-    animation: fadeInUp 0.8s ease-in-out both;
+  animation: fadeInUp 0.8s ease-in-out both;
 }
 
 /* ✅ Mobile Responsiveness */
 @media (max-width: 768px) {
-    .why-different h2 {
-        font-size: 28px;
-    }
+  .why-different h2 {
+    font-size: 28px;
+  }
 
-    .why-different p {
-        font-size: 16px;
-    }
+  .why-different p {
+    font-size: 16px;
+  }
 
-    .feature-box h4 {
-        font-size: 20px;
-    }
+  .feature-box h4 {
+    font-size: 20px;
+  }
 
-    .feature-box p {
-        font-size: 14px;
-    }
+  .feature-box p {
+    font-size: 14px;
+  }
 }
-
 
 /* ⬇️ Slider Container styling */
 .slider-container {
-    width: 95%;
-    margin: auto;
-    padding: 50px 0;
+  width: 95%;
+  margin: auto;
+  padding: 50px 0;
 }
 
 /* ✅ Product Card */
 .product-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 280px;
-    position: relative;
-    overflow: hidden;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
 }
 
 /* ✅ Hover Effect */
 .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* ✅ Product Image */
 .product-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 }
 
 .product-card:hover .product-image {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* ✅ Product Info */
 .product-info {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .product-info p {
-    color: #444;
-    font-size: 16px;
-    margin-bottom: 12px;
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 12px;
 }
 
 /* ✅ Stylish Button */
 .product-button {
-    padding: 10px;
-        font-size: 15px;
-        font-weight: bold;
-        background: linear-gradient(45deg, #333, #555);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-
+  background: #28a745;
+  background: linear-gradient(120deg, #0876ff, #66a3ff);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
 }
-
 .product-button:hover {
-background: linear-gradient(45deg, #555, #333);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+  background: #218838;
+  background: linear-gradient(120deg, #0876ff, #0056b3);
 }
 
 /* ✅ Slider Dots */
 .slick-dots li button:before {
-    font-size: 12px;
-    color: #007bff !important;
-    opacity: 0.7;
-    transition: all 0.3s ease-in-out;
+  font-size: 12px;
+  color: #007bff !important;
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
 }
 
 .slick-dots li.slick-active button:before {
-    color: #ff5733 !important;
-    transform: scale(1.2);
+  color: #ff5733 !important;
+  transform: scale(1.2);
 }
 
 /* ✅ Slider Navigation Arrows */
 .slick-prev,
 .slick-next {
-    font-size: 24px;
-    color: #007bff !important;
-    transition: color 0.3s ease-in-out;
+  font-size: 24px;
+  color: #007bff !important;
+  transition: color 0.3s ease-in-out;
 }
 
 .slick-prev:hover,
 .slick-next:hover {
-    color: #e74c3c !important;
+  color: #e74c3c !important;
 }
 
 /* ✅ Mobile Responsiveness */
 @media (max-width: 768px) {
-    .slider-container {
-        width: 95%;
-    }
+  .slider-container {
+    width: 95%;
+  }
 
-    .product-card {
-        max-width: 90%;
-    }
+  .product-card {
+    max-width: 90%;
+  }
 
-    .product-button {
-        font-size: 14px;
-        padding: 10px 16px;
-    }
+  .product-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
 
-    .product-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .product-button {
-        font-size: 12px;
-        padding: 8px 14px;
-    }
+  .product-button {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
 
-    .product-card {
-        max-width: 100%;
-        padding: 15px;
-    }
+  .product-card {
+    max-width: 100%;
+    padding: 15px;
+  }
 
-    .product-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* ✅ Section Styling */
 .slider-section {
-    margin: auto;
-    text-align: center;
-    padding: 50px 20px;
+  margin: auto;
+  text-align: center;
+  padding: 50px 20px;
 }
 
 /* ✅ Our Products Heading */
 .slider-heading {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-        font-size: 2.0rem;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        padding-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 /* ✅ Underline Effect */
 .slider-heading::after {
-content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: #333;
-    margin: 8px auto 0;
-    border-radius: 2px;
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #333;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 /* ✅ Fade-in Animation */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .slider-heading {
-    animation: fadeInUp 0.8s ease-in-out both;
+  animation: fadeInUp 0.8s ease-in-out both;
 }
 
 /* ✅ Responsive Design */
 @media (max-width: 768px) {
-    .slider-heading {
-        font-size: 28px;
-    }
+  .slider-heading {
+    font-size: 28px;
+  }
 }
 
 .whatsapp-button {
-   margin-bottom: 20px;
+  margin-bottom: 20px;
+  background: #28a745;
+}
+.whatsapp-button:hover {
+  background: #218838;
 }

@@ -14,7 +14,7 @@ export default function Header({ cart, handleLogout }) {
   const location = useLocation(); // Get current route path
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light shadow-sm py-2 fixed-top">
+    <nav className="navbar navbar-expand-lg bg-light  py-2 fixed-top">
       <div className="container-fluid">
         {/* Brand Logo */}
         <a className="navbar-brand px-3" href="/">

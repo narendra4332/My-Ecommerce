@@ -65,20 +65,25 @@ function Home({ HomePageCount }) {
     },
   ];
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: true,
-    cssEase: "ease-in-out",
-    arrows: true,
+    dots: true, // Neeche dots indicators honge
+    infinite: true, // Loop chalega continuously
+    speed: 800, // Thoda smooth transition
+    slidesToShow: 4, // Default 4 slides dikhengi
+    slidesToScroll: 1, // Ek ek slide scroll hogi
+    autoplay: true, // Auto slide enable
+    autoplaySpeed: 2500, // 2.5s me slide change
+    pauseOnHover: true, // Mouse le jaane pe rukega
+    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)", // Smooth animation
+    arrows: true, // Arrows enable
+    centerMode: true, // Slide centered
+    centerPadding: "20px", // Extra padding for better look
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 992, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false },
+      },
     ],
   };
 
