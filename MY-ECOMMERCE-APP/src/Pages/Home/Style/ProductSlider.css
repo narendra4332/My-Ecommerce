@@ -1,0 +1,194 @@
+/* ---------------- Product Slider Section ---------------- */
+.slider-section {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+/* Slider Heading */
+.slider-heading {
+  font-size: 2.5rem;
+  color: #222;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+.slider-heading::after {
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: #222;
+  display: block;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+/* Slick Slider Custom Styling */
+.slick-slider {
+  padding: 0 10px;
+}
+
+.slick-slide {
+  padding: 10px;
+}
+
+/* ---- Remove Default Prev/Next Text ---- */
+.slick-prev,
+.slick-next {
+  font-size: 0; /* Hides the default text */
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+}
+
+/* Custom Arrows */
+.slick-prev::before,
+.slick-next::before {
+  font-size: 24px;
+  color: #222;
+  opacity: 1;
+}
+
+.slick-prev:hover::before,
+.slick-next:hover::before {
+  color: #444;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  margin: 10px;
+  height: 350px; /* Adjusted Height */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  height: 180px; /* Reduced Height */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Product Info */
+.product-info {
+  padding: 20px 0;
+}
+
+/* Product Name */
+.product-info p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Product Button */
+.product-button {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.product-button:hover {
+  background: linear-gradient(45deg, #0056b3, #004494);
+  background: linear-gradient(to right, #1b7893, #5ab0d8);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+/* ---------------- Responsive Design ---------------- */
+@media screen and (max-width: 992px) {
+  .slider-heading {
+    font-size: 2rem;
+  }
+
+  .product-card {
+    padding: 15px;
+    height: 320px;
+  }
+
+  .product-info p {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider-section {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .slider-heading {
+    font-size: 1.8rem;
+  }
+
+  .product-card {
+    margin: 5px 0; /* Removed extra gap */
+  }
+
+  .product-image {
+    height: 160px;
+  }
+
+  .product-button {
+    font-size: 0.9rem;
+  }
+
+  .slick-prev,
+  .slick-next {
+    width: 30px;
+    height: 30px;
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider-heading {
+    font-size: 1.6rem;
+  }
+
+  .product-card {
+    height: 280px;
+    margin: 5px 0; /* Removed extra gap */
+  }
+
+  .product-image {
+    height: 140px;
+  }
+
+  .product-button {
+    padding: 6px 12px;
+  }
+
+  .slick-dots {
+    bottom: -10px;
+  }
+}

@@ -1,0 +1,234 @@
+/* Navbar Links (Default) */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Hover Effect (Only Color for Large Screens) */
+.navbar-nav .nav-link:hover {
+  color: #2193b0 !important; /* Text color change */
+}
+
+/* Active Link (Only Color for Large Screens) */
+.navbar-nav .nav-link.active {
+  color: #2193b0 !important;
+  font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    background-color: rgba(33, 147, 176, 0.2); /* Light background */
+    color: inherit !important; /* Text color same rahega */
+    border-radius: 5px;
+  }
+
+  /* Mobile Hover & Active - Background Color Change */
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link.active {
+    background-color: rgba(33, 147, 176, 0.486); /* Light background */
+    color: inherit !important; /* Text color same rahega */
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+
+  /* Increase touch area */
+  .navbar-nav .nav-item {
+    padding: 5px 0;
+  }
+
+  /* Mobile Navigation Background */
+  .navbar-collapse {
+    background: #f8f9fa;
+    padding: 10px;
+  }
+}
+
+/* Mobile View Fix */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    padding: 8px 12px;
+  }
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+/* Brand Name */
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2193b0;
+}
+
+/* Subtext */
+.brand-sub {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive Text Adjustments */
+@media (max-width: 768px) {
+  .brand-name {
+    font-size: 18px;
+  }
+  .brand-sub {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 16px;
+  }
+  .brand-sub {
+    font-size: 10px;
+  }
+}
+
+/* Cart Button */
+.cart-btn {
+  color: #2193b0;
+  border-color: #2193b0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 auto; Centering */
+  width: fit-content; /* Button ka width content ke hisaab se rahega */
+}
+
+.cart-btn:hover {
+  background-color: #2193b0;
+  color: white;
+}
+.butoon-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+/* Default Toggler Icon */
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  padding: 8px;
+  outline: none;
+}
+
+/* Toggler Icon Styling */
+.navbar-toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Lines */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Top Line */
+.navbar-toggler-icon::before {
+  top: -8px;
+}
+
+/* Bottom Line */
+.navbar-toggler-icon::after {
+  top: 8px;
+}
+
+/* Hover Effect */
+.navbar-toggler:hover .navbar-toggler-icon,
+.navbar-toggler:hover .navbar-toggler-icon::before,
+.navbar-toggler:hover .navbar-toggler-icon::after {
+  background-color: #333;
+}
+
+/* Active (Cross Icon) */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  background: transparent;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    padding: 6px;
+  }
+
+  .navbar-toggler-icon,
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    width: 25px;
+    height: 2.5px;
+  }
+
+  .navbar-toggler-icon::before {
+    top: -7px;
+  }
+
+  .navbar-toggler-icon::after {
+    top: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-toggler {
+    padding: 5px;
+  }
+
+  .navbar-toggler-icon,
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    width: 22px;
+    height: 2px;
+  }
+
+  .navbar-toggler-icon::before {
+    top: -6px;
+  }
+
+  .navbar-toggler-icon::after {
+    top: 6px;
+  }
+}

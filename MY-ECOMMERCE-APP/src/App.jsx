@@ -7,16 +7,17 @@ import {
 } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./Firebase";
-import Product from "./Pages/Product";
-import Cart from "./Pages/Cart";
-import ChecKout from "./Pages/ChecKout";
-import ThankYou from "./Pages/ThankYou";
-import Header from "./Components/Header";
-import About from "./Pages/About";
-import ProductCard from "./Components/ProductCard";
-import Footer from "./Components/Footer";
-import Auth from "./Pages/Auth";
-import Contact from "./Pages/Contact";
+import Product from "./Pages/Products/Product";
+import Cart from "./Pages/Cart/Cart";
+import ChecKout from "./Pages/Checkout/ChecKout";
+import ThankYou from "./Pages/Thankyou/Thankyou";
+import Header from "./Components/Header/Header";
+import About from "./Pages/About/About";
+import ProductCard from "./Components//Main/ProductCard";
+import Footer from "./Components/Footer/Footer";
+import Auth from "./Pages/Authantication/Auth";
+import Contact from "./Pages/Contact/Contact";
+import "./App.css";
 
 function App() {
   const [cart, setCart] = useState([]);

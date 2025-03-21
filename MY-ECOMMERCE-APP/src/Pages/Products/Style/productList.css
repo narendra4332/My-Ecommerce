@@ -1,0 +1,137 @@
+/* productList.css */
+
+/* Container Responsiveness */
+.product-list-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Responsive Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Product Card */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #9999996b;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Product Image */
+.product-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Product Name */
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Admin & User Controls - Buttons */
+.admin-controls,
+.user-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Wrap buttons on small screens */
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+/* Button Colors */
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+/* Hover Effect */
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Modal Responsiveness */
+.edit-product-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%; /* Adjust for smaller screens */
+  max-width: 400px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .product-name {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+  .product-list-container {
+    padding: 0px;
+  }
+}

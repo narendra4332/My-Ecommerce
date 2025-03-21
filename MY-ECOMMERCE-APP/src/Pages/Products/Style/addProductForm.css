@@ -1,0 +1,28 @@
+/* Product Form Container */
+.add-product-form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+.add-product-form input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Image Preview */
+.add-product-form img {
+  max-width: 150px;
+  display: block;
+  margin: 10px auto;
+}
+
+/* Button */
+.add-product-form .btn {
+  width: 100%;
+}

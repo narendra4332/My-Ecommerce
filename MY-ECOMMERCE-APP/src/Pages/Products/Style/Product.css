@@ -1,0 +1,67 @@
+html,
+body {
+  background-color: #fafafa;
+}
+/* Main Product Container */
+.container1 {
+  max-width: 1250px;
+  margin: auto;
+  padding: 50px 20px 20px 20px;
+}
+
+/* Product List */
+.product-list {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Title */
+.product-list h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(
+    1.5rem,
+    5vw,
+    2rem
+  ); /* Adjust font size based on screen width */
+  text-transform: uppercase;
+  color: #555;
+  text-align: center; /* Ensure centering */
+  margin-bottom: 10px;
+}
+
+.product-list h1::after {
+  content: "";
+  display: block;
+  width: clamp(50px, 15vw, 80px); /* Responsive width */
+  height: 4px;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  .product-list h1 {
+    font-size: 1.5rem;
+  }
+  .product-list h1::after {
+    width: 60%;
+  }
+}
+
+/* Grid Layout for Products */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
