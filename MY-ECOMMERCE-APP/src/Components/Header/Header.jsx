@@ -84,21 +84,21 @@ export default function Header({ cart, handleLogout }) {
           {/* Cart & Logout Section */}
           <div className="butoon-style">
             <Link
-              className="btn btn-sm d-flex align-items-center me-1 cart-btn"
+              className="btn btn-sm m-0 d-flex align-items-center me-1 cart-btn"
               to="/Cart"
             >
               <FaShoppingCart className="me-1" /> Cart ({cart.length})
             </Link>
             {cart.length > 0 && (
               <Link
-                className="btn btn-outline-success btn-sm d-flex align-items-center me-2"
+                className="btn btn-outline-success m-0 btn-sm d-flex align-items-center me-2"
                 to="/Checkout"
               >
                 ✅ Checkout
               </Link>
             )}
             <button
-              className="btn btn-outline-danger btn-sm d-flex align-items-center"
+              className="btn btn-outline-danger m-0 btn-sm d-flex align-items-center"
               onClick={handleLogout}
             >
               <FaUser className="me-1" /> Logout

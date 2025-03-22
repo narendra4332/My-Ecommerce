@@ -1,11 +1,14 @@
+/* Pagination Container */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
   margin-top: 20px;
+  flex-wrap: wrap; /* Responsive behavior */
 }
 
+/* Pagination Buttons */
 .page-button {
   padding: 8px 12px;
   border: 1px solid #2193b0;
@@ -14,19 +17,41 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
+  font-size: 1rem; /* Default size */
 }
 
-.page-button:hover {
-  background-color: #2193b0;
-  color: white;
-}
-
+/* Hover and Active States */
+.page-button:hover,
 .page-button.active {
   background-color: #2193b0;
   color: white;
 }
 
+/* Disabled Button */
 .page-button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .pagination {
+    gap: 3px;
+  }
+
+  .page-button {
+    padding: 6px 10px;
+    font-size: 0.9rem; /* Smaller size for small screens */
+  }
+}
+
+@media (max-width: 400px) {
+  .pagination {
+    gap: 2px;
+  }
+
+  .page-button {
+    padding: 5px 8px;
+    font-size: 0.8rem; /* Even smaller for extra small screens */
+  }
 }

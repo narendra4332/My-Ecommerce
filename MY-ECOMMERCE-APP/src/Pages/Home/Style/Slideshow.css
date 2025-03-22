@@ -53,8 +53,18 @@
   max-width: 500px;
 }
 .text-style h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.text-style h1::after {
+  content: "";
+  width: 100px;
+  height: 4px;
+  display: block;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  margin: 10px auto;
+  border-radius: 2px;
 }
 
 /* Paragraph */

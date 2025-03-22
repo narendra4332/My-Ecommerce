@@ -26,13 +26,13 @@ function ProductList({
               {role === "admin" ? (
                 <div className="admin-controls">
                   <button
-                    className="btn1 btn-edit"
+                    className="btn btn-success"
                     onClick={() => setEditingProduct(product)}
                   >
                     Edit
                   </button>
                   <button
-                    className="btn1 btn-delete"
+                    className="btn btn-danger"
                     onClick={() => handleDeleteProduct(product.id)}
                   >
                     Delete
@@ -86,11 +86,11 @@ function ProductList({
             }}
           />
 
-          <button className="btn1 btn-save" onClick={handleEditProduct}>
+          <button className="btn btn-success me-2 " onClick={handleEditProduct}>
             Save
           </button>
           <button
-            className="btn1 btn-cancel"
+            className="btn btn-dark"
             onClick={() => setEditingProduct(null)}
           >
             Cancel

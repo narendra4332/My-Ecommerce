@@ -3,18 +3,14 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #f9f9f9,
-    #ffffff
-  ); /* Soft White Gradient */
   color: #333;
   text-align: center;
   padding: 20px;
 }
 
 .thank-you-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: #f8f9fa;
+  border: 1px solid rgb(220, 220, 220);
   padding: 40px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
@@ -50,6 +46,7 @@
   gap: 8px;
   padding: 12px 22px;
   background: linear-gradient(45deg, #007bff, #0056b3);
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
   color: white;
   font-weight: bold;
   border-radius: 8px;
@@ -60,8 +57,8 @@
 
 .back-home-btn:hover {
   background: linear-gradient(45deg, #0056b3, #004494);
+  background: linear-gradient(to right, #1b7893, #5ab0d8);
   transform: scale(1.05);
-  box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.4);
 }
 
 .home-icon {
