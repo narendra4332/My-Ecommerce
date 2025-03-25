@@ -5,13 +5,14 @@ import "./Style/addProductForm.css";
 
 function ProductForm({ newProduct, setNewProduct, handleAddProduct }) {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false); // 🔹 ImgBB Upload Indicator
 
   // 🔹 Default Categories (Agar Firestore Me Data Na Ho)
   const defaultCategories = [
     "Converters",
     "FRC Cable Assembly",
-    "Heat Shirink Sleever",
-    "Heavy Duity Connecttors",
+    "Heat Shrink Sleeves",
+    "Heavy Duty Connectors",
     "Interface Cables",
     "IO Connectors",
     "M-8-12-16 Series Connectors",
@@ -26,14 +27,13 @@ function ProductForm({ newProduct, setNewProduct, handleAddProduct }) {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const categoryRef = collection(db, "categories"); // ✅ Ensure lowercase 'categories'
+        const categoryRef = collection(db, "categories");
         const querySnapshot = await getDocs(categoryRef);
 
         const fetchedCategories = querySnapshot.docs.map(
           (doc) => doc.data().name
         );
 
-        // 🔹 Default + Firestore Categories Merge Karke Unique List Banayein
         setCategories([
           ...new Set([...defaultCategories, ...fetchedCategories]),
         ]);
@@ -43,6 +43,40 @@ function ProductForm({ newProduct, setNewProduct, handleAddProduct }) {
     };
     fetchCategories();
   }, []);
+
+  // 🔹 ImgBB Image Upload Function
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+
+    setLoading(true); // ✅ Start Loading Indicator
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch(
+        `https://api.imgbb.com/1/upload?key=30100bb2810281d7aa0ba58f8b3831f1`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+
+      if (data.success) {
+        setNewProduct({
+          ...newProduct,
+          ImageURL: data.data.url, // ✅ Store ImgBB Image URL
+        });
+      } else {
+        console.error("ImgBB Upload Failed:", data);
+      }
+    } catch (error) {
+      console.error("Error uploading to ImgBB:", error);
+    }
+
+    setLoading(false); // ✅ Stop Loading Indicator
+  };
 
   return (
     <div className="add-product-form p-4 mb-2 shadow-sm rounded">
@@ -70,26 +104,18 @@ function ProductForm({ newProduct, setNewProduct, handleAddProduct }) {
         ))}
       </select>
 
+      {/* ✅ File Input (ImgBB Upload) */}
       <input
         type="file"
         className="form-control mb-2"
         accept="image/*"
-        onChange={(e) => {
-          const file = e.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              setNewProduct({
-                ...newProduct,
-                ImageFile: file,
-                ImageURL: reader.result, // ✅ Store Base64 Image
-              });
-            };
-            reader.readAsDataURL(file); // ✅ Convert Image to Base64
-          }
-        }}
+        onChange={(e) => handleImageUpload(e.target.files[0])}
       />
 
+      {/* ✅ Loading Indicator */}
+      {loading && <p className="text-info">Uploading Image...</p>}
+
+      {/* ✅ Show Uploaded Image */}
       {newProduct.ImageURL && (
         <img
           src={newProduct.ImageURL}

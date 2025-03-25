@@ -151,7 +151,10 @@ function Product({ addToCart }) {
         <Sidebar setSelectedCategory={setSelectedCategory} />
         {/* ✅ Sidebar ko yaha add kiya */}
         <div className="product-list">
-          <h1 className="text-center fw-bold">🛍️ Products ✨</h1>
+          <h1 className="text-center fw-bold">
+            <i className="bi bi-cart-check me-2"></i>Products
+            <i className="bi bi-check-circle ms-2"></i>
+          </h1>
           {/* ✅ Search Bar & Sort Button */}
           <div className="search-sort-container">
             <input

@@ -54,7 +54,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap; /* Wrap buttons on small screens */
-  gap: 10px;
+  gap: 6px;
 }
 
 /* Buttons */
@@ -62,6 +62,7 @@
   margin-top: 20px;
   border-radius: 5px;
   /* transition: all 0.3s; */
+
   border: none;
 }
 
@@ -100,6 +101,10 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .admin-controls,
+  .user-controls {
+    gap: 0px;
+  }
   .product-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
@@ -126,7 +131,7 @@
   }
 
   .btn {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding: 5px 10px;
   }
   .product-list-container {

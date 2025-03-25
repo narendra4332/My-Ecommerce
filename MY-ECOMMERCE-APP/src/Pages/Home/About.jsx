@@ -11,7 +11,9 @@ function About() {
     <div className="container my-5">
       {/* About Section */}
       <div className="text-center mb-5">
-        <h1 className="display fw-bold text-dark">🚀 About SUSCOM Group</h1>
+        <h1 className="display fw-bold text-dark">
+          <i className="bi bi-rocket-takeoff-fill me-2"></i> About SUSCOM Group
+        </h1>
         <p className="lead text-muted mx-auto w-75">
           We are pioneers in manufacturing, distributing, and importing
           high-quality connectors, cable assemblies, and data-signal converters.
@@ -73,7 +75,10 @@ function About() {
 
       {/* Why Different Section */}
       <div className="p-5 mt-5 rounded-3 shadow-lg bg-dark text-white text-center">
-        <h2 className="fw-bold">🌟 Why Are We Different?</h2>
+        <h2 className="fw-bold">
+          <i className="bi bi-question-circle-fill me-2"></i> Why Are We
+          Different?
+        </h2>
         <p>
           We commit to providing the best quality materials with competitive
           pricing and express delivery service.
@@ -82,19 +87,26 @@ function About() {
         <div className="row mt-4 g-4">
           <div className="col-md-4">
             <div className="p-4 border rounded-3 shadow-sm bg-light text-dark feature-box">
-              <h4 className="heading-color">🏆 Certified Excellence</h4>
+              <h4 className="heading-color">
+                <i className="bi bi-check-circle-fill me-2"></i> Certified
+                Excellence
+              </h4>
               <p>ISO 9001-2015 and CE certified quality systems.</p>
             </div>
           </div>
           <div className="col-md-4">
             <div className="p-4 border rounded-3 shadow-sm bg-light text-dark feature-box">
-              <h4 className="heading-color">🎨 Tailored Solutions</h4>
+              <h4 className="heading-color">
+                <i className="bi bi-tools me-2"></i> Tailored Solutions
+              </h4>
               <p>We offer full customization to meet client needs.</p>
             </div>
           </div>
           <div className="col-md-4">
             <div className="p-4 border rounded-3 shadow-sm bg-light text-dark feature-box">
-              <h4 className="heading-color">🤝 Exceptional Support</h4>
+              <h4 className="heading-color">
+                <i className="bi bi-headset me-2"></i> Exceptional Support
+              </h4>
               <p>Guaranteed quality products with expert assistance.</p>
             </div>
           </div>

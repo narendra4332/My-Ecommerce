@@ -31,7 +31,9 @@ function ProductSlider({ products }) {
 
   return (
     <div className="slider-section container py-5">
-      <h2 className="text-center fw-bold text-dark mb-4">✨ Our Products ✨</h2>
+      <h2 className="text-center fw-bold text-dark mb-4">
+        <i className="bi bi-box-seam me-2"></i> Our Products
+      </h2>
       <Slider {...settings} className="product-slider">
         {showProduct.map((product) => (
           <div className="product-card shadow-lg rounded" key={product.id}>

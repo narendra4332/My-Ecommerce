@@ -3,7 +3,6 @@ import { collection, doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase"; // Firebase Firestore
 import { useNavigate } from "react-router-dom";
 import "./Checkout.css"; // Importing CSS
-import { FaCreditCard } from "react-icons/fa";
 
 function Checkout({ cart, setCart }) {
   const [name, setName] = useState("");

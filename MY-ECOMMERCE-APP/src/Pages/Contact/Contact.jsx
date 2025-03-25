@@ -18,7 +18,11 @@ export default function Contact() {
         className="contact-card"
       >
         <div>
-          <h2 className="contact-heading">📞Contact Us ✉️</h2>
+          <h2 className="contact-heading">
+            <i className="bi bi-telephone-fill me-2"></i> Contact Us{" "}
+            <i className="bi bi-envelope-fill ms-2"></i>
+          </h2>
+
           <p className="contact-subtext">
             Reach out to the right department for quick assistance.
           </p>
@@ -28,34 +32,34 @@ export default function Contact() {
           <div className="contact-box">
             <h3>Info</h3>
             <p>
-              <FaEnvelope className="icon email" /> info@suscom.in
+              <i className="bi bi-envelope-fill me-2"></i> info@suscom.in
             </p>
             <p>
-              <FaPhoneAlt className="icon phone" /> +91 769 745 1009
+              <i className="bi bi-telephone-fill me-2"></i> +91 769 745 1009
             </p>
           </div>
           <div className="contact-box">
             <h3>Dispatch</h3>
             <p>
-              <FaEnvelope className="icon email" /> dispatch@suscom.in
+              <i className="bi bi-envelope-fill me-2"></i> dispatch@suscom.in
             </p>
             <p>
-              <FaPhoneAlt className="icon phone" /> +91 882 762 9301
+              <i className="bi bi-telephone-fill me-2"></i> +91 882 762 9301
             </p>
           </div>
           <div className="contact-box">
             <h3>Marketing</h3>
             <p>
-              <FaEnvelope className="icon email" /> marketing@suscom.in
+              <i className="bi bi-envelope-fill me-2"></i> marketing@suscom.in
             </p>
             <p>
-              <FaPhoneAlt className="icon phone" /> +91 808 765 9549
+              <i className="bi bi-telephone-fill me-2"></i> +91 808 765 9549
             </p>
           </div>
           <div className="contact-box">
             <h3>Landline</h3>
             <p>
-              <FaPhoneAlt className="icon phone" /> +91 755 492 5469
+              <i className="bi bi-telephone-fill me-2"></i> +91 755 492 5469
             </p>
           </div>
         </div>
@@ -63,19 +67,22 @@ export default function Contact() {
         <div className="contact-info">
           <h3>Contact Information</h3>
           <p>
-            <FaMapMarkerAlt className="icon location" /> Plot No. 20, 1st floor,
-            Pitambara Tower, Ahinsha Vihar, Narela Jode, Ayodhya Bypass, Bhopal,
-            M.P. - 462041
+            <i className="bi bi-geo-alt-fill me-2"></i>
+            Plot No. 20, 1st floor, Pitambara Tower, Ahinsha Vihar, Narela Jode,
+            Ayodhya Bypass, Bhopal, M.P. - 462041
           </p>
+
           <p>
-            <FaPhoneAlt className="icon phone" /> +91 769 745 1009
+            <i className="bi bi-telephone-fill me-2"></i> +91 769 745 1009
           </p>
+
           <p>
-            <FaEnvelope className="icon email" /> info@suscom.in
+            <i className="bi bi-envelope-fill me-2"></i> info@suscom.in
           </p>
+
           <p>
-            <FaClock className="icon time" /> Office Timing: Mon - Sat, 9:30 AM
-            - 6:30 PM
+            <i className="bi bi-clock-fill me-2"></i> Office Timing: Mon - Sat,
+            9:30 AM - 6:30 PM
           </p>
         </div>
       </div>
