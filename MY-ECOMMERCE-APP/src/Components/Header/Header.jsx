@@ -8,9 +8,10 @@ import {
   FaInfoCircle,
   FaBoxOpen,
   FaPhoneAlt,
+  FaComments,
 } from "react-icons/fa";
 
-export default function Header({ cart, handleLogout }) {
+export default function Header({ cart, handleLogout, userRole }) {
   const location = useLocation(); // Get current route path
 
   return (
@@ -28,7 +29,6 @@ export default function Header({ cart, handleLogout }) {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          // style={{ marginLeft: "10px" }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -69,6 +69,21 @@ export default function Header({ cart, handleLogout }) {
                 <FaBoxOpen className="me-1" /> Products
               </Link>
             </li>
+
+            {/* ✅ Orders tab sirf admin ke liye dikhayein */}
+            {userRole === "admin" && (
+              <li className="nav-item px-3">
+                <Link
+                  className={`nav-link text-dark ${
+                    location.pathname === "/Orders" ? "active" : ""
+                  }`}
+                  to="/Orders"
+                >
+                  <FaComments className="me-1" /> Inquiries
+                </Link>
+              </li>
+            )}
+
             <li className="nav-item px-3">
               <Link
                 className={`nav-link text-dark ${
