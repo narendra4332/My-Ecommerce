@@ -1,0 +1,14 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+:root {
+  --my-Color1: #2193b0;
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --light-gray: #f8f9fa;
+  --light-green: #e9f5e9;
+  --light-yellow: #fff8e1;
+}
