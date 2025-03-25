@@ -16,25 +16,34 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [user, setUser] = useState(null); // ✅ User state track karne ke liye
+  const [loading, setLoading] = useState(true); // ✅ Loading state add kiya
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
 
-  // Track authentication state
+  // ✅ Check Authentication State
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        const userRole = userDoc.exists() ? userDoc.data().role : "user";
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+        const userDocRef = doc(db, "users", currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
 
-        // Redirect user after login
-        navigate("/");
+        if (userDoc.exists()) {
+          const userRole = userDoc.data().role;
+          console.log("User Role:", userRole);
+
+          // ✅ Sirf pehli baar login hone ke baad navigate karenge
+          navigate("/");
+        }
       }
+      setLoading(false); // ✅ Loading complete
     });
 
-    return () => unsubscribe(); // Cleanup listener
+    return () => unsubscribe(); // ✅ Cleanup function
   }, [navigate]);
 
-  // Handle Email/Password Auth
+  // ✅ Handle Email/Password Authentication
   const handleAuth = async (e) => {
     e.preventDefault();
     try {
@@ -46,7 +55,7 @@ const Auth = () => {
           password
         );
 
-        // Default role as "user"
+        // ✅ Default role "user" ke sath Firestore me store karein
         await setDoc(doc(db, "users", userCredential.user.uid), {
           email: email,
           role: "user",
@@ -58,29 +67,39 @@ const Auth = () => {
           password
         );
       }
+
+      setUser(userCredential.user);
+      navigate("/"); // ✅ Login hone ke baad navigate
     } catch (error) {
       alert(error.message);
     }
   };
 
-  // Handle Google Sign-In
+  // ✅ Handle Google Sign-In
   const handleGoogleSignIn = async () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       const userRef = doc(db, "users", userCredential.user.uid);
-      let userRole = "user"; // Default role
-
       const userDoc = await getDoc(userRef);
+
+      // ✅ Agar pehli baar login ho raha hai to Firestore me data store karein
       if (!userDoc.exists()) {
         await setDoc(userRef, {
           email: userCredential.user.email,
           role: "user",
         });
       }
+
+      setUser(userCredential.user);
+      navigate("/"); // ✅ Google Login hone ke baad navigate
     } catch (error) {
       alert(error.message);
     }
   };
+
+  if (loading) {
+    return <div className="text-center text-light">Loading...</div>; // ✅ Jab tak auth state load ho raha hai, loading dikhao
+  }
 
   return (
     <div className="auth-container d-flex align-items-center justify-content-center vh-100">

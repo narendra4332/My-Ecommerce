@@ -1,59 +1,121 @@
+/* 🔹 Full-Screen Gradient Background */
 .auth-container {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
+/* 🔹 Glassmorphism Card */
 .auth-card {
-    width: 350px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  width: 380px;
+  background: rgba(255, 255, 255, 0.1);
+  /* backdrop-filter: blur(12px); */
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 🔹 Card Hover Effect */
+.auth-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔹 Heading */
 .auth-card h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #00d4ff;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
+/* 🔹 Input Fields */
 .auth-card input {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+/* 🔹 Input Placeholder */
 .auth-card input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
 }
 
+/* 🔹 Input Focus Effect */
 .auth-card input:focus {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: none;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+  outline: none;
 }
 
+/* 🔹 Primary Button */
 .btn-primary {
-    background: #ff7f50;
-    border: none;
-    transition: all 0.3s;
+  width: 100%;
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  /* margin-top: 15px; */
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+/* 🔹 Primary Button Hover */
 .btn-primary:hover {
-    background: #ff6347;
+  background: linear-gradient(90deg, #0052cc, #0099ff);
+  transform: scale(1.05);
 }
 
+/* 🔹 Secondary Button */
 .btn-light {
-    border: 1px solid #ccc;
-    transition: all 0.3s;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+/* 🔹 Secondary Button Hover */
 .btn-light:hover {
-    background: #f8f9fa;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
+/* 🔹 Light Text */
 .text-light {
-    color: white;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+/* 🔹 Links */
+.auth-card a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.auth-card a:hover {
+  color: #00a3cc;
+  text-decoration: underline;
 }
