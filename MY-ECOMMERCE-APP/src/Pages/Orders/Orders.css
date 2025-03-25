@@ -1,0 +1,234 @@
+/* 🌟 Main Container */
+.container1 {
+  max-width: 1200px;
+}
+
+/* 🌟 Heading */
+.heading {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+  color: #555;
+  margin-top: 20px;
+}
+
+.heading::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* 🌟 Title Styling */
+.text-primary {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  -webkit-text-fill-color: transparent;
+}
+
+/* 🌟 Filter Section */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.filter-container select {
+  width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #2193b0;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.filter-container select:hover {
+  border-color: #6dd5ed;
+}
+
+/* 🌟 Inquiry Cards */
+.card {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  background: #ffffff;
+  padding: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.card .border-bottom {
+  border-color: #2193b0 !important;
+}
+
+/* 🌟 Inquiry Details List */
+.list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  padding: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+  background: rgba(33, 147, 176, 0.1);
+}
+
+.list-group-item p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.list-group-item img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #2193b0;
+}
+
+/* 🌟 Buttons */
+.btn {
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 991px) {
+  .filter-container {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .filter-container select {
+    width: 100%;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .list-group-item img {
+    width: 100%;
+    max-width: 120px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container1 {
+    padding: 60px 15px 15px 15px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .text-primary {
+    font-size: 24px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .filter-container select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .list-group-item img {
+    width: 100%;
+    max-width: 100px;
+  }
+}
+.dropdown .btn {
+  background: #2193b0;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown .btn:hover {
+  background: #176d84; /* थोड़ा Dark Shade Hover Effect */
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background: #176d84; /* Drop-down menu hover effect */
+  color: white;
+}
