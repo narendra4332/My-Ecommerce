@@ -98,22 +98,17 @@
 
 /* Checkout Button */
 .checkout-btn {
-  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  background: #2193b0;
   color: white;
-  font-size: 1rem;
-  padding: 12px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out, transform 0.2s;
-  width: 100%;
-  margin-top: 20px;
+  transition: background 0.3s ease-in-out;
 }
 
 .checkout-btn:hover {
-  background: linear-gradient(to right, #1b7893, #5ab0d8);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 12px rgba(27, 120, 147, 0.5);
+  background: #17687f;
 }
 
 /* Responsive Design */
