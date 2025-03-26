@@ -43,7 +43,7 @@ function ProductList({
                   className="btn1 btn-add"
                   onClick={() => addToCart(product)}
                 >
-                  Add to Cart
+                  Add to Inquiry
                 </button>
               )}
             </div>
