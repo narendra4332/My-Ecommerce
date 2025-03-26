@@ -2,8 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css"; // Importing CSS file
 
-function Cart({ cart }) {
+function Cart({ cart, setCart }) {
   const navigate = useNavigate();
+
+  // Function to Delete an Item
+  const handleDelete = (index) => {
+    const updatedCart = cart.filter((_, i) => i !== index);
+    setCart(updatedCart);
+  };
 
   return (
     <div className="cart-main-container">
@@ -21,8 +27,15 @@ function Cart({ cart }) {
                   className="cart-image"
                 />
                 <div className="cart-details">
-                  {/* <p className="cart-id">ID: {item.id}</p> */}
                   <p className="cart-name">{item.Name}</p>
+                </div>
+                <div>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}
@@ -33,7 +46,7 @@ function Cart({ cart }) {
             className="checkout-button"
             onClick={() => navigate("/checkout")}
           >
-            Proceed to Checkout
+            Proceed to Inquiry
           </button>
         )}
       </div>
