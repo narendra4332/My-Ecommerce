@@ -133,10 +133,10 @@ function Product({ addToCart }) {
     setFilteredProducts(tempProducts);
   }, [selectedCategory, searchTerm, sortOrder, products]);
 
-  // // ✅ Sorting Toggle Function
-  // const toggleSortOrder = () => {
-  //   setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-  // };
+  // ✅ Sorting Toggle Function
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  };
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -156,6 +156,7 @@ function Product({ addToCart }) {
             <i className="bi bi-check-circle ms-2"></i>
           </h1>
           {/* ✅ Search Bar & Sort Button */}
+          {/* ✅ Search Bar & Sort Button (Responsive) */}
           <div className="search-sort-container">
             <input
               type="text"
@@ -164,13 +165,11 @@ function Product({ addToCart }) {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            {/* <button
-                className="btn btn-outline-primary sort-btn"
-                onClick={toggleSortOrder}
-              >
-                {sortOrder === "asc" ? "Sort A-Z ⬆️" : "Sort Z-A ⬇️"}
-              </button> */}
+            <button className="sort-btn" onClick={toggleSortOrder}>
+              {sortOrder === "asc" ? "Sort A-Z ⬆️" : "Sort Z-A ⬇️"}
+            </button>
           </div>
+
           {role === "admin" && (
             <ProductForm
               newProduct={newProduct}
@@ -178,6 +177,7 @@ function Product({ addToCart }) {
               handleAddProduct={handleAddProduct}
             />
           )}
+
           <ProductList
             products={currentProducts}
             role={role}

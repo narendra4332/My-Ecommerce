@@ -156,3 +156,54 @@ body {
 .sort-btn:hover {
   background-color: #0056b3;
 }
+
+/* ✅ Search Bar & Sorting Button Responsive Design */
+.search-sort-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  flex: 1;
+  min-width: 200px; /* ✅ Chhoti screens ke liye */
+  max-width: 300px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.sort-btn {
+  padding: 8px 15px;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sort-btn:hover {
+  background: #0056b3;
+}
+
+/* ✅ Mobile View (max-width: 600px) */
+@media (max-width: 600px) {
+  .search-sort-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .sort-btn {
+    width: 100%;
+  }
+}
