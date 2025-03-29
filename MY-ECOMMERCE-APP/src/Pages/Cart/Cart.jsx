@@ -13,7 +13,7 @@ function Cart({ cart, setCart }) {
 
   return (
     <div className="cart-main-container">
-      <h1 className="cart-title">Your Cart</h1>
+      <h1 className="cart-title">Inquiry Cart</h1>
       <div className="cart-container">
         {cart.length === 0 ? (
           <p className="empty-cart">Your cart is empty.</p>
@@ -46,7 +46,7 @@ function Cart({ cart, setCart }) {
             className="checkout-button"
             onClick={() => navigate("/checkout")}
           >
-            Proceed to Inquiry
+            Continue to Inquiry Form
           </button>
         )}
       </div>
