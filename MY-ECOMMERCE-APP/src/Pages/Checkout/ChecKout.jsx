@@ -1,35 +1,28 @@
 import React, { useState } from "react";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../Firebase"; // Firebase Firestore
+import { db } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
-import "./Checkout.css"; // Importing CSS
+import "./Checkout.css";
 
 function Checkout({ cart, setCart }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [notes, setNotes] = useState(""); // New Order Notes Field
+  const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleCheckout = async (e) => {
-    e.preventDefault();
+  const handleCheckout = async () => {
+    // 🚀 **Alert-based Confirmation**
+    const isConfirmed = window.confirm(
+      "Are you sure you want to submit this inquiry?\n\nOnce submitted, our team will review your request and get back to you."
+    );
 
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-
-    // Phone number validation
-    if (!/^[0-9]{10}$/.test(phone)) {
-      alert("Please enter a valid 10-digit phone number.");
-      return;
-    }
+    if (!isConfirmed) return; // User ne cancel kiya toh function stop ho jayega
 
     setLoading(true);
-
     try {
       const counterRef = doc(db, "Counters", "OrderCounter");
       const counterSnap = await getDoc(counterRef);
@@ -43,35 +36,19 @@ function Checkout({ cart, setCart }) {
         newOrderID = 101;
       }
 
-      // New Order Data
       const newOrder = {
-        user: {
-          name,
-          email,
-          phone,
-          address,
-          notes: notes.trim() || "N/A", // Store "N/A" if empty
-        },
-        orderDetails: {
-          items: cart,
-          createdAt: new Date(),
-        },
+        user: { name, email, phone, address, notes: notes.trim() || "N/A" },
+        orderDetails: { items: cart, createdAt: new Date() },
       };
 
-      // Save order with unique ID
       await setDoc(doc(db, "Orders", newOrderID.toString()), newOrder);
-
-      // Update the counter
       await updateDoc(counterRef, { lastOrderID: newOrderID });
 
-      console.log("Order placed successfully:", newOrderID);
-      alert(`Thank you, ${name}! Your inquiry has been received.`);
-
-      // Clear cart
+      // alert(
+      //   `Thank you, ${name}! Your inquiry has been successfully submitted.`
+      // );
       setCart([]);
-
-      // Redirect to Thank You page
-      navigate("/thankyou");
+      navigate("/thankyou", { state: { userName: name } });
     } catch (error) {
       console.error("Error placing order:", error);
       alert("Error processing order. Please try again later.");
@@ -82,9 +59,9 @@ function Checkout({ cart, setCart }) {
 
   return (
     <div className="main-checkout-box">
-      <h1 className="checkout-title">Checkout</h1>
+      <h1 className="checkout-title">Submit Your Inquiry</h1>
       <div className="checkout-container">
-        <form onSubmit={handleCheckout} className="checkout-form">
+        <form onSubmit={(e) => e.preventDefault()} className="checkout-form">
           <div className="input-group">
             <input
               type="text"
@@ -94,7 +71,6 @@ function Checkout({ cart, setCart }) {
               required
             />
           </div>
-
           <div className="input-group">
             <input
               type="email"
@@ -104,7 +80,6 @@ function Checkout({ cart, setCart }) {
               required
             />
           </div>
-
           <div className="input-group">
             <input
               type="tel"
@@ -115,7 +90,6 @@ function Checkout({ cart, setCart }) {
               required
             />
           </div>
-
           <div className="input-group">
             <input
               type="text"
@@ -125,7 +99,6 @@ function Checkout({ cart, setCart }) {
               required
             />
           </div>
-
           <div className="input-group">
             <textarea
               placeholder="Any special instructions? (Optional)"
@@ -134,8 +107,13 @@ function Checkout({ cart, setCart }) {
             />
           </div>
 
-          <button type="submit" className="checkout-btn" disabled={loading}>
-            {loading ? "Processing..." : "Submit Inquiry"}
+          <button
+            type="button"
+            className="checkout-btn"
+            onClick={handleCheckout}
+            disabled={loading}
+          >
+            {loading ? "Processing..." : "Confirm & Submit Inquiry"}
           </button>
         </form>
       </div>
