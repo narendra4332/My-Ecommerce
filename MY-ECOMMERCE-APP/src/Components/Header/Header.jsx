@@ -105,14 +105,14 @@ export default function Header({ cart, handleLogout, userRole }) {
               <FaShoppingCart className="me-1 mt-1" /> Inquiry Cart (
               {cart.length})
             </Link>
-            {cart.length > 0 && (
+            {/* {cart.length > 0 && (
               <Link
                 className="btn btn-outline-success m-0 btn-sm d-flex align-items-center me-2 center-btn"
                 to="/Checkout"
               >
                 ✅ Checkout
               </Link>
-            )}
+            )} */}
             <button
               className="btn btn-outline-danger m-0 btn-sm d-flex align-items-center center-btn"
               onClick={handleLogout}
