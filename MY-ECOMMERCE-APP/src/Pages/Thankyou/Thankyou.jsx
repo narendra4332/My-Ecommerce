@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import "./ThankYou.css"; // Ensure CSS file is linked
 
 function ThankYou() {
+  const location = useLocation();
+  const userName = location.state?.userName;
   return (
     <div className="thank-you-container">
       <div className="thank-you-card">
@@ -12,11 +14,17 @@ function ThankYou() {
           alt="Success"
           className="thank-you-icon"
         />
-        <h1>📩 Thank You for Your Inquiry! 📩</h1>
+        <h1>🎉 Thank You, {userName}! Your Inquiry is Received 🎉</h1>
         <p>
-          We have received your inquiry and will get back to you as soon as
-          possible. Our team will review your request and respond shortly. Stay
-          tuned!
+          We truly appreciate your interest! Our team is already reviewing your
+          request, and we'll get in touch with you shortly.
+        </p>
+        <p>
+          If you have any urgent queries, feel free to{" "}
+          <span className="Contact">
+            <Link to="/Contact"> reach out </Link>
+          </span>
+          . Have a wonderful day! 😊
         </p>
         <Link to="/" className="back-home-btn">
           <FaHome className="home-icon" /> Back to Home
