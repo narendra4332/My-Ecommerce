@@ -122,12 +122,19 @@
 }
 
 /* 🌟 Buttons */
-.btn {
+/* .btn {
   transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
   transform: scale(1.05);
+} */
+
+.btn2 {
+  border: none;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 /* 🌟 Responsive Design */
